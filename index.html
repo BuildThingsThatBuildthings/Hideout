@@ -18,7 +18,7 @@
                 <p>Live Well. Work Hard. GOLF Everyday.</p>
                 <button class="cta-button glow">Join The Hideout</button>
                 <div class="benefits-grid">
-                    <div class="benefit-item" data-description="Experience The Hideout at two premier Nashville locations: Sylvan Supply and The Gulch. Each offers a unique atmosphere and top-tier amenities for golfers of all levels.">
+                    <div class="benefit-item" data-description="Experience The Hideout at two premier Nashville locations: Sylvan Supply and The Gulch. Each offers a unique atmosphere and top-tier amenities for golfers of all levels." data-image="https://storage.googleapis.com/msgsndr/RWD1uKPwFu84Zcm7Go2Q/media/673201bbfaec9bb59076f8fd.png">
                         <span>Access to 2 locations</span>
                     </div>
                     <div class="benefit-item" data-description="Perfect your swing with Trackman — the same precision technology trusted by the PGA Tour for unparalleled accuracy and feedback.">
@@ -92,6 +92,9 @@
                             Your browser does not support the video tag.
                         </video>
                     `;
+                    popupVideo.style.display = 'block';
+                } else if (item.dataset.image) {
+                    popupVideo.innerHTML = `<img src="${item.dataset.image}" alt="Location Map" style="width: 100%; border-radius: 8px;">`;
                     popupVideo.style.display = 'block';
                 } else {
                     popupVideo.innerHTML = '';

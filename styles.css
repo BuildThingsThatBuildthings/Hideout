@@ -92,11 +92,6 @@ header {
     gap: 4rem;
     align-items: start;
     padding-top: 120px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('https://storage.googleapis.com/msgsndr/RWD1uKPwFu84Zcm7Go2Q/media/671dd9cad2e1af6e5ba0e839.png');
-    background-size: 70% auto;
-    background-position: 5% 20%;
-    background-repeat: no-repeat;
     position: relative;
 }
 
@@ -107,7 +102,7 @@ header {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
     pointer-events: none;
 }
 
@@ -144,13 +139,13 @@ header {
     background-color: rgba(10, 10, 10, 0.8);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 90%;
+    margin: 0 auto;
 }
 
-video {
+.video-section video {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
 /* CTA Button with glow effect */
@@ -250,7 +245,7 @@ video {
     border-radius: 12px;
     position: relative;
     width: 90%;
-    max-width: 500px;
+    max-width: 600px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -275,9 +270,11 @@ video {
     margin-top: 1.5rem;
     border-radius: 8px;
     overflow: hidden;
+    max-width: 100%;
 }
 
-.popup-video video {
+.popup-video video,
+.popup-video img {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -335,6 +332,7 @@ video {
 
     .video-section {
         order: 0;
+        width: 100%;
     }
 
     .hero h1 {
