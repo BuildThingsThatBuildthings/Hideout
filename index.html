@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hideout Golf - A New Way to Live a Golf Life</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="minimal-header">
+        <img src="assets/images/logo.svg" alt="The Hideout Golf Logo" class="small-logo">
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Nashville's Best Way<br>To Live a Golf Life</h1>
+                <p>Live Well. Work Hard. GOLF Everyday.</p>
+                <button class="cta-button glow">Join The Hideout</button>
+                <div class="benefits-grid">
+                    <div class="benefit-item" data-description="Experience The Hideout at two premier Nashville locations: Sylvan Supply and The Gulch. Each offers a unique atmosphere and top-tier amenities for golfers of all levels.">
+                        <span>Access to 2 locations</span>
+                    </div>
+                    <div class="benefit-item" data-description="Perfect your swing with Trackman — the same precision technology trusted by the PGA Tour for unparalleled accuracy and feedback.">
+                        <span>The same Trackman Technology used by the PGA Tour</span>
+                    </div>
+                    <div class="benefit-item" data-description="Start strong with personalized onboarding led by Head Pro Jake Finn, formerly of Valhalla. Our expert guidance will set you up for success from day one.">
+                        <span>1 on 1 onboarding session and lesson</span>
+                    </div>
+                    <div class="benefit-item" data-description="Play when it's convenient for you. With extended hours from 6:00 am to 10:00 pm, you can make time for golf on your schedule.">
+                        <span>6:00a - 10:00p Facility Access</span>
+                    </div>
+                    <div class="benefit-item" data-description="Golf is better together. All memberships at The Hideout are family-inclusive, allowing you to bring your loved ones along for one price.">
+                        <span>ALL memberships are family memberships</span>
+                    </div>
+                    <div class="benefit-item" data-description="Elevate your game with our complete gym facilities, including Tonal for golf-specific workouts, free weights, and cardio equipment to keep you in peak form." data-video="https://storage.googleapis.com/msgsndr/RWD1uKPwFu84Zcm7Go2Q/media/67367e08e9210270164150ea.mp4">
+                        <span>Gym Access</span>
+                    </div>
+                    <div class="benefit-item" data-description="Master those tricky putts with our advanced Putt Lab technology — available exclusively at Sylvan. Get the precision feedback you need to sink every shot." data-video="https://storage.googleapis.com/msgsndr/RWD1uKPwFu84Zcm7Go2Q/media/67367e08e9210236a04150e9.mp4">
+                        <span>Putt lab</span>
+                    </div>
+                    <div class="benefit-item" data-description="Combine work and play with our dedicated co-working space at 8th Ave. Enjoy a productive day surrounded by the community you love.">
+                        <span>Co-working Space</span>
+                    </div>
+                    <div class="benefit-item" data-description="Join fellow Hideout members for exclusive field trips to renowned courses and events. It's all about camaraderie and adventure on and off the course.">
+                        <span>Field Trips</span>
+                    </div>
+                </div>
+            </div>
+            <div class="video-section">
+                <video width="100%" height="100%" controls>
+                    <source src="https://storage.googleapis.com/msgsndr/UAmz1IQNKJaI1bYl6xUV/media/673675f88cbdd23f18094c2c.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+    </main>
+
+    <div class="bottom-image-container">
+        <img src="https://storage.googleapis.com/msgsndr/RWD1uKPwFu84Zcm7Go2Q/media/66e350c1ef38a5b8b451ac9f.png" alt="The Hideout Golf" class="bottom-image">
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3 class="popup-title"></h3>
+            <p class="popup-description"></p>
+            <div class="popup-video"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 The Hideout Golf. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.benefit-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const popup = document.getElementById('popup');
+                const popupTitle = popup.querySelector('.popup-title');
+                const popupDescription = popup.querySelector('.popup-description');
+                const popupVideo = popup.querySelector('.popup-video');
+                
+                popupTitle.textContent = item.querySelector('span').textContent;
+                popupDescription.textContent = item.dataset.description;
+                
+                // Handle video content
+                if (item.dataset.video) {
+                    popupVideo.innerHTML = `
+                        <video width="100%" controls>
+                            <source src="${item.dataset.video}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                    popupVideo.style.display = 'block';
+                } else {
+                    popupVideo.innerHTML = '';
+                    popupVideo.style.display = 'none';
+                }
+                
+                popup.style.display = 'flex';
+            });
+        });
+
+        document.querySelector('.close-popup').addEventListener('click', () => {
+            const popup = document.getElementById('popup');
+            const popupVideo = popup.querySelector('.popup-video video');
+            if (popupVideo) {
+                popupVideo.pause();
+            }
+            popup.style.display = 'none';
+        });
+
+        // Close popup when clicking outside
+        document.getElementById('popup').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('popup')) {
+                const popupVideo = document.querySelector('.popup-video video');
+                if (popupVideo) {
+                    popupVideo.pause();
+                }
+                document.getElementById('popup').style.display = 'none';
+            }
+        });
+
+        // Close popup with escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const popup = document.getElementById('popup');
+                const popupVideo = popup.querySelector('.popup-video video');
+                if (popupVideo) {
+                    popupVideo.pause();
+                }
+                popup.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
